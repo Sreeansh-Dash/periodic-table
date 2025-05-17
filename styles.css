@@ -185,51 +185,103 @@ h1, h2, h3 {
     padding: 20px;
 }
 
+/* Improved Modern Periodic Table Styling */
 .periodic-table {
     display: grid;
-    grid-template-columns: repeat(18, 1fr);
+    grid-template-columns: repeat(19, minmax(30px, 1fr)); /* 18 columns + 1 for labels */
+    grid-template-rows: repeat(11, minmax(60px, auto)); /* 7 main rows + gaps + lanthanides/actinides */
     gap: 4px;
-    margin-top: 20px;
+    margin: 30px auto;
+    max-width: 1400px;
+}
+
+.element-cell {
+    aspect-ratio: 1/1;
+    border-radius: 4px;
 }
 
 .element {
-    aspect-ratio: 1/1;
+    position: relative;
+    padding: 4px;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    padding: 5px;
-    cursor: pointer;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.7);
-    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: rgba(255,255,255,0.75);
+    cursor: pointer;
+    aspect-ratio: 1/1;
 }
 
-.element:hover {
-    transform: scale(1.2);
+.element:hover,
+.element.hovered {
+    transform: scale(1.15);
     z-index: 10;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.symbol {
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-.number {
-    font-size: 0.8em;
+.element .number {
     position: absolute;
     top: 3px;
     left: 3px;
+    font-size: 0.7em;
+    color: rgba(0,0,0,0.6);
 }
 
-/* Element categories styling */
-.nonmetal { background-color: rgba(252, 212, 116, 0.7); }
-.noble { background-color: rgba(148, 223, 255, 0.7); }
-.metal { background-color: rgba(190, 190, 190, 0.7); }
-.halogen { background-color: rgba(255, 160, 122, 0.7); }
-.metalloid { background-color: rgba(177, 230, 181, 0.7); }
+.element .symbol {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.element .name {
+    font-size: 0.7em;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-description {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+
+/* Element category colors */
+.alkali { background-color: rgba(255, 102, 102, 0.8); }
+.alkaline { background-color: rgba(255, 191, 0, 0.8); }
+.transition { background-color: rgba(204, 204, 204, 0.8); }
+.metal { background-color: rgba(128, 128, 255, 0.8); }
+.metalloid { background-color: rgba(102, 204, 102, 0.8); }
+.nonmetal { background-color: rgba(255, 255, 102, 0.8); }
+.halogen { background-color: rgba(255, 204, 153, 0.8); }
+.noble { background-color: rgba(204, 153, 255, 0.8); }
+.lanthanoid { background-color: rgba(255, 153, 204, 0.8); }
+.actinoid { background-color: rgba(153, 204, 255, 0.8); }
+
+/* Table labels */
+.table-label {
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0,0,0,0.7);
+}
+
+.series-label {
+    grid-column: span 2;
+    font-size: 0.9em;
+}
+
+
 
 /* Filter buttons */
 #filters {
