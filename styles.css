@@ -181,8 +181,8 @@ h1, h2, h3 {
     grid-template-columns: repeat(19, minmax(30px, 1fr)); /* 18 columns + 1 for labels */
     grid-template-rows: repeat(11, minmax(60px, auto)); /* 7 main rows + gaps + lanthanides/actinides */
     gap: 4px;
-    margin: 30px auto;
-    max-width: 1400px;
+    margin: 20px auto;
+    max-width: min(95vw, 1400px);
 }
 
 .element-cell {
@@ -235,13 +235,18 @@ h1, h2, h3 {
 
 .table-description {
     max-width: 800px;
-    margin: 0 auto 20px;
+    margin: 40px auto 20px;
     text-align: center;
     font-size: 0.9rem;
     line-height: 1.5;
     padding: 15px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
 }
 
 .explore-btn:hover {
@@ -287,6 +292,9 @@ h1, h2, h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    min-height: 90vh;
+    padding-bottom: 100px;
 }
 
 /* Element category colors */
@@ -339,7 +347,7 @@ h1, h2, h3 {
 /* Back button */
 .back-btn {
     display: block;
-    margin: 30px auto;
+    margin: 0 auto;
     padding: 10px 20px;
     border: none;
     border-radius: 20px;
@@ -347,6 +355,10 @@ h1, h2, h3 {
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .back-btn:hover {
@@ -463,6 +475,16 @@ h1, h2, h3 {
     
     .octave-row {
         flex-wrap: wrap;
+    }
+    
+    .table-section .container {
+        padding-bottom: 140px;
+    }
+    
+    .table-description {
+        bottom: 100px;
+        font-size: 0.8rem;
+        padding: 12px;
     }
 }
 
