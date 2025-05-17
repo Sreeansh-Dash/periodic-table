@@ -1376,7 +1376,7 @@ function renderModernTable() {
         <p>The table's current form was developed primarily by Henry Moseley in 1913, who showed 
         that elements should be arranged by atomic number rather than atomic weight.</p>
     `;
-    tableContainer.insertBefore(description, tableGrid);
+    
 
     // Create and add the legend
     const legend = document.createElement('div');
@@ -1481,11 +1481,9 @@ function renderModernTable() {
 
     // Add the legend before the back button
     const backButton = tableContainer.querySelector('.back-btn');
-    /*if (backButton) {
-        tableContainer.insertBefore(legend, backButton);
-    } else {
-        tableContainer.appendChild(legend);
-    }*/
+    if (backButton) {
+        tableContainer.insertBefore(description, backButton);
+    } 
 }
 
 // Helper function to add group and period labels
