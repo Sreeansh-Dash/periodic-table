@@ -1338,10 +1338,17 @@ function showMainPage() {
         section.classList.add('hidden');
     });
     
-    // Show and scroll to explore section
+    // Show all main sections
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('hidden');
+    });
+    
+    // Scroll to explore section
     const exploreSection = document.getElementById('explore');
-    exploreSection.classList.remove('hidden');
-    exploreSection.scrollIntoView({ behavior: 'smooth' });
+    exploreSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Re-trigger scroll effects
+    handleScroll();
 }
 
 // Initialize with more elements if needed
