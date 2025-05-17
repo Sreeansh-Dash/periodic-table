@@ -1450,17 +1450,19 @@ function renderModernTable() {
         elementDiv.style.gridColumn = el.xpos;
         elementDiv.style.gridRow = ypos;
         
-        // Create element content with number, symbol, and name
+        // Create element content with number, symbol, name, and group number
         elementDiv.innerHTML = `
             <div class="number">${el.number}</div>
             <div class="symbol">${el.symbol}</div>
             <div class="name">${el.name.length > 10 ? el.name.slice(0, 8) + '...' : el.name}</div>
+            <div class="group-number">Group ${el.xpos}</div>
         `;
         
         // Add tooltips with more info
         elementDiv.setAttribute('title', `${el.name} (${el.category})
 Atomic Mass: ${el.atomic_mass}
-Phase: ${el.phase}`);
+Phase: ${el.phase}
+Group: ${el.xpos}`);
         
         // Add event listeners for hover effects
         elementDiv.addEventListener('mouseover', () => {
