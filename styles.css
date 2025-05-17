@@ -412,49 +412,78 @@ h1, h2, h3 {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.octaves-explanation {
+    max-width: 800px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .octave-row {
     display: flex;
-    justify-content: flex-start;
-    margin-bottom: 30px;
-    gap: 8px;
-    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 900px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
 }
 
 .octave-row .element {
-    min-width: 60px;
-    min-height: 60px;
-    padding: 10px;
+    min-width: 80px;
+    min-height: 80px;
+    padding: 12px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.1rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: all 0.2s ease;
     text-align: center;
+    flex: 1;
+    max-width: 120px;
 }
 
 .octave-row .element:hover {
     transform: scale(1.1);
     background: #ffe4b5;
     z-index: 10;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(117, 25, 208, 0.408);
 }
 
-/* Highlight elements in the same column position (octave pattern) */
 .octave-row .element.highlighted {
-    box-shadow: 0 0 12px 4px rgba(255, 215, 0, 0.6);
+    box-shadow: 0 0 12px 4px rgba(117, 25, 208, 0.408);
     background: rgba(255, 235, 205, 0.9);
     position: relative;
 }
 
-.hidden {
-    display: none;
+/* Responsive adjustments for octaves */
+@media (max-width: 768px) {
+    .octave-row {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .octave-row .element {
+        min-width: 60px;
+        min-height: 60px;
+        font-size: 0.9rem;
+        padding: 8px;
+    }
 }
 
 /* Animations */
@@ -485,10 +514,6 @@ h1, h2, h3 {
     .periodic-table {
         grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
         gap: 2px;
-    }
-    
-    .octave-row {
-        flex-wrap: wrap;
     }
     
     .table-section .container {
@@ -578,4 +603,115 @@ h2 {
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+}
+
+/* Mendeleev's Table Styles */
+.mendeleev-container {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.mendeleev-explanation {
+    max-width: 800px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.mendeleev-table {
+    width: 100%;
+    overflow-x: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.mendeleev-grid {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 4px;
+    margin: 0 auto;
+}
+
+.mendeleev-grid th {
+    padding: 10px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+.mendeleev-grid td {
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.mendeleev-element {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 6px;
+    padding: 8px;
+    min-width: 70px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.mendeleev-element:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(117, 25, 208, 0.408);
+    z-index: 10;
+}
+
+.mendeleev-element .symbol {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+.mendeleev-element .weight {
+    font-size: 0.8em;
+    color: #666;
+}
+
+.period-number {
+    font-weight: bold;
+    color: #333;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+.empty-cell {
+    color: #999;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+/* Add the hidden class back */
+.hidden {
+    display: none;
+}
+
+/* Responsive adjustments for Mendeleev's table */
+@media (max-width: 768px) {
+    .mendeleev-grid {
+        font-size: 0.9em;
+    }
+
+    .mendeleev-element {
+        min-width: 50px;
+        padding: 6px;
+    }
+
+    .mendeleev-grid th,
+    .mendeleev-grid td {
+        padding: 6px;
+    }
 }
