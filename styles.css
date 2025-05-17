@@ -269,7 +269,7 @@ h1, h2, h3 {
 }
 
 /* Historical tables styling */
-.triad-container, .octave-container {
+.triad-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -296,10 +296,50 @@ h1, h2, h3 {
     justify-content: space-between;
 }
 
+/* Octaves specific styling */
+.octave-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;
+}
+
 .octave-row {
     display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.octave-row .element {
+    min-width: 60px;
+    min-height: 60px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.octave-row .element:hover {
+    transform: scale(1.1);
+    background: #ffe4b5;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Highlight elements in the same column position (octave pattern) */
+.octave-row .element.highlighted {
+    box-shadow: 0 0 12px 4px rgba(255, 215, 0, 0.6);
+    background: rgba(255, 235, 205, 0.9);
+    position: relative;
 }
 
 .hidden {
