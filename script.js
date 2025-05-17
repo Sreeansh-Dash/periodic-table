@@ -1546,18 +1546,89 @@ function renderOctaves() {
 // Render Mendeleev's Table
 function renderMendeleev() {
     const container = document.getElementById('mendeleev-container');
-    container.innerHTML = `
-        <div style="text-align: center; padding: 20px;">
-            <p>Mendeleev's periodic table arranged elements by atomic weight and chemical properties.</p>
-            <p>He left gaps for undiscovered elements and predicted their properties.</p>
-        </div>
-        <div class="mendeleev-table">
-            <!-- Here you would create a table based on Mendeleev's arrangement -->
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Mendeleev%27s_1869_periodic_table.svg/800px-Mendeleev%27s_1869_periodic_table.svg.png" 
-                 alt="Mendeleev's Periodic Table" 
-                 style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
-        </div>
+    container.innerHTML = '';
+    container.className = 'mendeleev-container';
+
+    // Add explanation
+    const explanation = document.createElement('div');
+    explanation.className = 'mendeleev-explanation';
+    explanation.innerHTML = `
+        <p>Mendeleev's periodic table (1869) arranged elements by atomic weight and chemical properties.
+        He left gaps for undiscovered elements and predicted their properties, which were later proven correct.</p>
     `;
+    container.appendChild(explanation);
+
+    // Create Mendeleev's table
+    const tableDiv = document.createElement('div');
+    tableDiv.className = 'mendeleev-table';
+
+    // Mendeleev's original groups (I to VIII)
+    const mendeleevGroups = [
+        ['H 1', 'Li 7', 'Na 23', 'K 39', 'Cu 63', 'Rb 85', 'Ag 108', 'Cs 133', 'Au 197'],
+        ['Be 9', 'Mg 24', 'Ca 40', 'Zn 65', 'Sr 87', 'Cd 112', 'Ba 137', 'Hg 201'],
+        ['B 11', 'Al 27', 'Sc 44', 'Ga 70', 'Y 89', 'In 113', 'La 139', 'Tl 204'],
+        ['C 12', 'Si 28', 'Ti 48', 'Ge 73', 'Zr 91', 'Sn 119', 'Ce 140', 'Pb 207'],
+        ['N 14', 'P 31', 'V 51', 'As 75', 'Nb 93', 'Sb 122', 'Di 144', 'Bi 208'],
+        ['O 16', 'S 32', 'Cr 52', 'Se 78', 'Mo 96', 'Te 128', '--', '--'],
+        ['F 19', 'Cl 35', 'Mn 55', 'Br 80', '--', 'I 127', '--', '--'],
+        ['--', '--', 'Fe 56', '--', 'Ru 104', '--', '--', '--'],
+        ['--', '--', 'Co 59', '--', 'Rh 104', '--', '--', '--'],
+        ['--', '--', 'Ni 59', '--', 'Pt 198', '--', '--', '--'],
+        ['--', '--', '--', '--', 'Ir 198', '--', '--', '--'],
+        ['--', '--', '--', '--', 'Os 199', '--', '--', '--']
+    ];
+
+    // Create table structure
+    const table = document.createElement('table');
+    table.className = 'mendeleev-grid';
+
+    // Add group numbers (I to VIII)
+    const headerRow = document.createElement('tr');
+    for (let i = 0; i <= mendeleevGroups.length; i++) {
+        const th = document.createElement('th');
+        th.textContent = i === 0 ? '' : `Group ${toRomanNumeral(i)}`;
+        headerRow.appendChild(th);
+    }
+    table.appendChild(headerRow);
+
+    // Add elements
+    const maxRows = Math.max(...mendeleevGroups.map(g => g.length));
+    for (let row = 0; row < maxRows; row++) {
+        const tr = document.createElement('tr');
+        
+        // Add period number
+        const periodTd = document.createElement('td');
+        periodTd.className = 'period-number';
+        periodTd.textContent = `Period ${row + 1}`;
+        tr.appendChild(periodTd);
+
+        // Add elements for each group
+        for (let group = 0; group < mendeleevGroups.length; group++) {
+            const td = document.createElement('td');
+            if (mendeleevGroups[group][row]) {
+                const [symbol, weight] = mendeleevGroups[group][row].split(' ');
+                td.className = 'mendeleev-element';
+                td.innerHTML = `
+                    <div class="symbol">${symbol}</div>
+                    <div class="weight">${weight}</div>
+                `;
+            } else {
+                td.className = 'empty-cell';
+                td.textContent = '--';
+            }
+            tr.appendChild(td);
+        }
+        table.appendChild(tr);
+    }
+
+    tableDiv.appendChild(table);
+    container.appendChild(tableDiv);
+}
+
+// Helper function to convert numbers to Roman numerals
+function toRomanNumeral(num) {
+    const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+    return romanNumerals[num - 1] || num.toString();
 }
 
 // Filter elements by category
