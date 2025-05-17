@@ -1382,7 +1382,6 @@ function renderModernTable() {
     const legend = document.createElement('div');
     legend.className = 'element-legend';
     legend.innerHTML = `
-        <div class="legend-title">Element Categories:</div>
         <div class="legend-grid">
             <div class="legend-item">
                 <span class="color-box alkali"></span>
