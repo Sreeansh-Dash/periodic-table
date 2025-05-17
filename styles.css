@@ -315,7 +315,7 @@ h1, h2, h3 {
 
 .table-description {
     position: absolute;
-    bottom: 70px;
+    bottom: 100px;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
