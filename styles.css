@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+#table {
+    display: grid;
+    grid-template-columns: repeat(18, 40px);
+    gap: 4px;
+}
+.element {
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+.element:hover {
+    box-shadow: 0 0 10px #2196f3;
+    z-index: 2;
+    position: relative;
+}
