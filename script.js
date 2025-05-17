@@ -1481,9 +1481,9 @@ function renderModernTable() {
 
     // Add the legend before the back button
     const backButton = tableContainer.querySelector('.back-btn');
-    if (backButton) {
-        tableContainer.insertBefore(description, backButton);
-    } 
+    
+    tableContainer.insertBefore(description, backButton);
+    
 }
 
 // Helper function to add group and period labels
