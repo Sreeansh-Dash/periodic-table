@@ -2,19 +2,134 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Periodic Table Explorer</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Periodic Table</h1>
-    <div id="filters"></div>
-    <div id="table"></div>
+    <!-- Hero Section -->
+    <section id="hero" class="section gradient-hero">
+        <div class="container">
+            <h1>Periodic Table Explorer</h1>
+            <p>Discover the elements and the history of their organization</p>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+                <span>Scroll to explore</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section id="history" class="section gradient-history">
+        <div class="container">
+            <h2>History of the Periodic Table</h2>
+            <p>The organization of elements has evolved significantly over time, from early attempts to identify patterns to the modern periodic table we use today.</p>
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <h3>1829: Döbereiner's Triads</h3>
+                    <p>Johann Döbereiner identified groups of three elements with similar properties, where the middle element had properties that were approximately the average of the other two.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>1865: Newlands' Octaves</h3>
+                    <p>John Newlands arranged elements by increasing atomic weight and observed that every eighth element exhibited similar properties, which he called the "Law of Octaves".</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>1869: Mendeleev's Table</h3>
+                    <p>Dmitri Mendeleev created a comprehensive periodic table, arranging elements by atomic mass and chemical properties, even leaving gaps for undiscovered elements.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Modern Periodic Table</h3>
+                    <p>The modern periodic table arranges elements by atomic number (number of protons) and electron configuration, revealing fundamental patterns in chemical properties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uses Section -->
+    <section id="uses" class="section gradient-uses">
+        <div class="container">
+            <h2>Uses of the Periodic Table</h2>
+            <div class="uses-grid">
+                <div class="use-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>Chemical Research</h3>
+                    <p>Scientists use the periodic table to predict how elements will react and form compounds.</p>
+                </div>
+                <div class="use-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Education</h3>
+                    <p>Students learn fundamental chemical principles through understanding periodic trends.</p>
+                </div>
+                <div class="use-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Industry</h3>
+                    <p>Engineers and manufacturers reference the table to select materials with specific properties.</p>
+                </div>
+                <div class="use-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>Medicine</h3>
+                    <p>Medical researchers develop treatments using elements and compounds guided by periodic properties.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section id="explore" class="section gradient-explore">
+        <div class="container">
+            <h2>Explore Different Periodic Tables</h2>
+            <p>Journey through the evolution of how elements have been organized throughout history.</p>
+            
+            <div class="explore-buttons">
+                <button class="explore-btn" onclick="navigateTo('modern')">Modern Periodic Table</button>
+                <button class="explore-btn" onclick="navigateTo('triads')">Döbereiner's Triads</button>
+                <button class="explore-btn" onclick="navigateTo('octaves')">Newlands' Octaves</button>
+                <button class="explore-btn" onclick="navigateTo('mendeleev')">Mendeleev's Table</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Containers (Initially Hidden) -->
+    <section id="modern-table" class="table-section gradient-modern hidden">
+        <div class="container">
+            <h2>Modern Periodic Table</h2>
+            <div id="filters">
+                <button onclick="filterCategory('all')">All Elements</button>
+                <button onclick="filterCategory('nonmetal')">Nonmetals</button>
+                <button onclick="filterCategory('noble')">Noble Gases</button>
+                <button onclick="filterCategory('metal')">Metals</button>
+                <button onclick="filterCategory('halogen')">Halogens</button>
+            </div>
+            <div id="table" class="periodic-table"></div>
+            <button class="back-btn" onclick="showMainPage()">Back to Main</button>
+        </div>
+    </section>
+
+    <section id="triads-table" class="table-section gradient-triads hidden">
+        <div class="container">
+            <h2>Döbereiner's Triads</h2>
+            <div id="triads-container"></div>
+            <button class="back-btn" onclick="showMainPage()">Back to Main</button>
+        </div>
+    </section>
+
+    <section id="octaves-table" class="table-section gradient-octaves hidden">
+        <div class="container">
+            <h2>Newlands' Octaves</h2>
+            <div id="octaves-container"></div>
+            <button class="back-btn" onclick="showMainPage()">Back to Main</button>
+        </div>
+    </section>
+
+    <section id="mendeleev-table" class="table-section gradient-mendeleev hidden">
+        <div class="container">
+            <h2>Mendeleev's Periodic Table</h2>
+            <div id="mendeleev-container"></div>
+            <button class="back-btn" onclick="showMainPage()">Back to Main</button>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
-<div id="filters">
-    <button onclick="filterCategory('all')">All</button>
-    <button onclick="filterCategory('nonmetal')">Nonmetals</button>
-    <button onclick="filterCategory('noble gas')">Noble Gases</button>
-    <!-- Add more buttons as needed -->
-</div>
