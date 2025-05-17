@@ -1377,12 +1377,59 @@ function renderModernTable() {
         that elements should be arranged by atomic number rather than atomic weight.</p>
     `;
     tableContainer.insertBefore(description, tableGrid);
-    
-    // Create empty grid cells for proper spacing
-    const totalRows = 10; // 7 main rows + lanthanoids + actinoids + spacing
-    const totalCols = 18;
+
+    // Create and add the legend
+    const legend = document.createElement('div');
+    legend.className = 'element-legend';
+    legend.innerHTML = `
+        <div class="legend-title">Element Categories:</div>
+        <div class="legend-grid">
+            <div class="legend-item">
+                <span class="color-box alkali"></span>
+                <span>Alkali Metals</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box alkaline"></span>
+                <span>Alkaline Earth Metals</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box transition"></span>
+                <span>Transition Metals</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box metal"></span>
+                <span>Post-Transition Metals</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box metalloid"></span>
+                <span>Metalloids</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box nonmetal"></span>
+                <span>Nonmetals</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box halogen"></span>
+                <span>Halogens</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box noble"></span>
+                <span>Noble Gases</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box lanthanoid"></span>
+                <span>Lanthanides</span>
+            </div>
+            <div class="legend-item">
+                <span class="color-box actinoid"></span>
+                <span>Actinides</span>
+            </div>
+        </div>
+    `;
     
     // First, create an empty grid
+    const totalRows = 10; // 7 main rows + lanthanoids + actinoids + spacing
+    const totalCols = 18;
     for (let row = 1; row <= totalRows; row++) {
         for (let col = 1; col <= totalCols; col++) {
             const emptyCell = document.createElement('div');
@@ -1429,6 +1476,14 @@ Phase: ${el.phase}`);
     
     // Add labels for groups and periods
     addTableLabels(tableGrid);
+
+    // Add the legend before the back button
+    const backButton = tableContainer.querySelector('.back-btn');
+    if (backButton) {
+        tableContainer.insertBefore(legend, backButton);
+    } else {
+        tableContainer.appendChild(legend);
+    }
 }
 
 // Helper function to add group and period labels
