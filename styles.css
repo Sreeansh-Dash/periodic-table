@@ -178,11 +178,12 @@ h1, h2, h3 {
 /* Periodic Table Styles */
 .periodic-table {
     display: grid;
-    grid-template-columns: repeat(19, minmax(30px, 1fr)); /* 18 columns + 1 for labels */
-    grid-template-rows: repeat(11, minmax(60px, auto)); /* 7 main rows + gaps + lanthanides/actinides */
+    grid-template-columns: repeat(19, minmax(45px, 1fr));
+    grid-template-rows: repeat(11, minmax(75px, auto));
     gap: 4px;
     margin: 20px auto;
-    max-width: min(95vw, 1400px);
+    max-width: min(98vw, 1600px);
+    justify-content: center;
 }
 
 .element-cell {
@@ -192,7 +193,7 @@ h1, h2, h3 {
 
 .element {
     position: relative;
-    padding: 4px;
+    padding: 6px;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
@@ -214,23 +215,25 @@ h1, h2, h3 {
 
 .element .number {
     position: absolute;
-    top: 3px;
-    left: 3px;
-    font-size: 0.7em;
+    top: 4px;
+    left: 4px;
+    font-size: 0.8em;
     color: rgba(0,0,0,0.6);
 }
 
 .element .symbol {
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin: 5px 0;
 }
 
 .element .name {
-    font-size: 0.7em;
+    font-size: 0.75em;
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 0 2px;
 }
 
 .table-description {
@@ -293,8 +296,8 @@ h1, h2, h3 {
     flex-direction: column;
     align-items: center;
     position: relative;
-    min-height: 90vh;
-    padding-bottom: 100px;
+    min-height: 95vh;
+    padding: 20px 10px 120px;
 }
 
 /* Element category colors */
@@ -469,8 +472,8 @@ h1, h2, h3 {
     }
     
     .periodic-table {
-        grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-        gap: 2px;
+        grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+        gap: 3px;
     }
     
     .octave-row {
@@ -485,6 +488,14 @@ h1, h2, h3 {
         bottom: 100px;
         font-size: 0.8rem;
         padding: 12px;
+    }
+    
+    .element .symbol {
+        font-size: 1.1em;
+    }
+    
+    .element .name {
+        font-size: 0.65em;
     }
 }
 
